@@ -5,7 +5,7 @@
     <title>Icon to PNG Converter </title>
     <link rel="stylesheet" href="icofont/css/icofont.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <script type="text/javascript" src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <script type="text/javascript" src="utils.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -19,7 +19,14 @@
     <script type="text/javascript">
         function download() {
             $("#img-out").empty();
-            html2canvas($("#downloadicone"), {
+            
+            html2canvas(document.querySelector("#downloadicone")).then(canvas => {
+    document.body.appendChild(canvas);
+                   $("#img-out").append(canvas);
+        
+});
+            
+           /* html2canvas($("#downloadicone"), {
                 onrendered: function (canvas) {
                     theCanvas = canvas;
                     document.body.appendChild(canvas);
@@ -28,7 +35,7 @@
                     $("#img-out").append(canvas);
                     // Clean up 
                 }
-            });
+            });*/
         };
     </script>
     <style>
